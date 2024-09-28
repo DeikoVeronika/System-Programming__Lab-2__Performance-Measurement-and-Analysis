@@ -1,9 +1,10 @@
-﻿#include <iostream>
+#include <iostream>
 #include <vector>
-#include <cstdlib> 
+#include <cstdlib>
 
 using namespace std;
 
+// Функція множення матриць без оптимізації
 vector<vector<int>> multiplyMatrices(const vector<vector<int>>& A, const vector<vector<int>>& B) {
     int n = A.size();
     vector<vector<int>> C(n, vector<int>(n, 0));
@@ -26,7 +27,7 @@ vector<vector<int>> generateRandomMatrix(int n, int seed) {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            matrix[i][j] = rand() % 10000; 
+            matrix[i][j] = rand() % 10000;
         }
     }
 
@@ -47,15 +48,8 @@ int main() {
     cout << "Enter the matrix size: ";
     cin >> n;
 
-    static vector<vector<int>> A, B; 
-    static int count = 0; 
-
-    if (count % 2 == 0) {
-        A = generateRandomMatrix(n, 3);
-        B = generateRandomMatrix(n, 4);
-    }
-
-    count++; 
+    vector<vector<int>> A = generateRandomMatrix(n, 3);
+    vector<vector<int>> B = generateRandomMatrix(n, 4);
 
     vector<vector<int>> C = multiplyMatrices(A, B);
 
